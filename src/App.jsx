@@ -1,16 +1,18 @@
-import { useState } from 'react'
-import './App.css'
+import './App.css';
+import PreHome from './components/BeforeLogin/PreHome';
+import Footer from './components/BeforeLogin/Footer';
+import Header from './components/BeforeLogin/Header';
+import FaQ from './components/Commons/FaQ';
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
-    <>
-     Netflix clone
-     <h1 class="text-3xl font-bold underline text-red-500">
-    Hello world!
-  </h1>
-    </>
+    <div className='w-full lg:max-w-[1300px] 2xl:max-w-[1500px] h-full  '> 
+    <Header />
+    <PreHome />
+    <FaQ />
+    <Footer />
+    </div>
   )
 }
 

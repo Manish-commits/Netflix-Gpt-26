@@ -7,3 +7,8 @@
     > Login page
     > Trending now section with horizontal scroll
     > FAQ section
+
+   - For Login/Signup: use Formik 
+
+ - Routing Pages
+   > Auth routes
