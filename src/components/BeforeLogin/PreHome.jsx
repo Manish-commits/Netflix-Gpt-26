@@ -18,7 +18,7 @@ const PreHome = () => {
         <p className='text-center font-normal text-[1rem]'>Ready to watch? Enter your email to create or restart your membership.</p>
         <form className='w-full h-[54px] flex gap-2 '>
           <input 
-          type='text' 
+          type='email' 
           placeholder='Email address'
           className='w-full border-[0.25px] border-gray-500 rounded-sm px-4 py-2' />
           <button type='submit'
@@ -28,9 +28,9 @@ const PreHome = () => {
         </form>
       </div>
     </div>
-    <div className='bg-black border border-white'>
+    {/* <div className='bg-black border border-white'>
       Curve containerrrrr
-    </div>
+    </div> */}
     <TrendingNow />
     <ReasonsToJoin />
     </>

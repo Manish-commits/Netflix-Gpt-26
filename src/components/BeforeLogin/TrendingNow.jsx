@@ -1,9 +1,7 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import MovieCard from './MovieCard';
 
-const TrendingNow = () => {
-
-    const trendingList = [
+ const trendingList = [
         {
             id: 1,
             title: 'Musafir Cafe',
@@ -54,22 +52,45 @@ const TrendingNow = () => {
             title: 'Musafir Cafe',
             thumbnail: 'https://occ-0-2159-3647.1.nflxso.net/dnm/api/v6/mAcAr9TxZIVbINe88xb3Teg5_OA/AAAABdCNdKR9dgupDlDI12eOrjd3d1uHJXGw537qUxGjCrEHiyDqJ5OIPTEP107q4e-qLJERuWreYp5bF7t5BxNEI7SfZhIY3p_Sp4w.webp?r=434'
         },
-    ]
+    ];
 
-  return (
-    <div className='w-full bg-black text-white py-5'>
-    <div className='w-full lg:max-w-[1000px] mx-auto p-4 flex flex-col gap-4'> 
-        <h2 className='text-[24px] font-semibold'>Trending Now</h2>
-        <div className='w-full flex gap-2 overflow-scroll scrollbar-hide'> 
-        {
-            trendingList.map((item) => {
-                return <MovieCard cardDetails={item}/>
-            })
-        }
+const TrendingNow = () => {
+    const scrollRef = useRef(null);
+
+    const handleSwipe = (direction) => {
+         if (!scrollRef.current) return;
+          const scrollAmount = 300;
+
+           scrollRef.current.scrollBy({
+            left: direction === 'left' ? -scrollAmount : scrollAmount,
+            behavior: 'smooth',
+        });
+    }
+
+    return (
+        <div className='w-full bg-black text-white py-5'>
+            <div className='w-full lg:max-w-[1000px] mx-auto p-4 flex flex-col gap-4'>
+                <h2 className='text-[24px] font-semibold'>Trending Now</h2>
+                <div className='flex gap-1'>
+                    <button className='rounded-lg font-bold border px-2 cursor-pointer'
+                        onClick={() => handleSwipe('left')}>
+                        {'<'}
+                    </button>
+                    <div ref={scrollRef} className='w-full flex gap-2 overflow-scroll scrollbar-hide'>
+                        {
+                            trendingList.map((item) => {
+                                return <MovieCard key={item.id} cardDetails={item} />
+                            })
+                        }
+                    </div>
+                    <button className='rounded-lg font-bold border px-2 cursor-pointer'
+                        onClick={() => handleSwipe('right')}>
+                        {'>'}
+                    </button>
+                </div>
+            </div>
         </div>
-    </div>
-    </div>
-  )
+    )
 }
 
 export default TrendingNow
